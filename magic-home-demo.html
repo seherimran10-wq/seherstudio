@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Magic Home | Dubai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --indigo:#2C1B47;
+    --violet:#4C2E77;
+    --gold:#F0BE4D;
+    --lilac:#C4B0DE;
+    --cream:#FBF8F2;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--cream);color:var(--indigo);font-family:'Work Sans',sans-serif;line-height:1.6;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 32px;}
+
+  header{padding:24px 0;position:sticky;top:0;background:rgba(251,248,242,0.92);backdrop-filter:blur(6px);z-index:50;border-bottom:1px solid rgba(76,46,119,0.12);}
+  header .wrap{display:flex;justify-content:space-between;align-items:center;}
+  .brand{font-family:'Fraunces',serif;font-weight:600;font-size:1.3rem;color:var(--violet);display:flex;align-items:center;gap:8px;}
+  .brand svg{width:22px;height:22px;}
+  nav{display:flex;gap:28px;font-size:0.88rem;}
+  nav a{opacity:0.75;}
+  nav a:hover{opacity:1;color:var(--violet);}
+  .header-cta{background:var(--violet);color:var(--cream);padding:10px 20px;border-radius:20px;font-size:0.82rem;font-weight:600;}
+
+  /* Hero */
+  .hero{padding:100px 0 60px;position:relative;overflow:hidden;}
+  .sparkle{position:absolute;width:6px;height:6px;background:var(--gold);border-radius:50%;opacity:0.7;animation:twinkle 2.4s ease-in-out infinite;}
+  @keyframes twinkle{0%,100%{opacity:0.15;transform:scale(0.6);}50%{opacity:0.9;transform:scale(1.2);}}
+  .hero .wrap{text-align:center;max-width:760px;position:relative;}
+  .kicker{font-family:'Work Sans',sans-serif;font-size:0.78rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--violet);margin-bottom:22px;}
+  h1{font-family:'Fraunces',serif;font-size:3.4rem;font-weight:600;line-height:1.1;margin-bottom:22px;color:var(--indigo);}
+  h1 em{font-style:italic;color:var(--violet);}
+  .hero p.lede{font-size:1.1rem;color:#5f4f7a;max-width:520px;margin:0 auto 36px;}
+  .btnrow{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .btn{padding:15px 28px;font-weight:600;font-size:0.9rem;border-radius:24px;}
+  .btn-primary{background:var(--violet);color:var(--cream);}
+  .btn-outline{border:1.5px solid var(--violet);color:var(--violet);}
+
+  /* Before/after swipe reveal */
+  .reveal-wrap{margin-top:60px;position:relative;}
+  .reveal-card{
+    position:relative;width:100%;max-width:640px;margin:0 auto;
+    aspect-ratio:16/8;border-radius:16px;overflow:hidden;
+    box-shadow:0 30px 60px -30px rgba(44,27,71,0.35);
+  }
+  .layer{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;}
+  .before{background:linear-gradient(135deg,#3a3a3a,#1e1e1e);color:#bbb;}
+  .after{background:linear-gradient(135deg,var(--violet),var(--indigo));color:var(--cream);clip-path:inset(0 50% 0 0);transition:clip-path .1s;}
+  .layer .tag{font-family:'Work Sans',sans-serif;font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;opacity:0.7;}
+  .layer .word{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:600;}
+  .slider{position:absolute;top:0;bottom:0;left:50%;width:3px;background:var(--gold);cursor:ew-resize;transform:translateX(-50%);}
+  .slider::after{content:'⇔';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--gold);color:var(--indigo);width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;}
+  .reveal-range{width:100%;max-width:640px;margin:14px auto 0;display:block;accent-color:var(--violet);}
+  .reveal-caption{text-align:center;font-size:0.82rem;color:#8873a3;margin-top:10px;}
+
+  section{padding:90px 0;}
+  .section-head{max-width:600px;margin:0 auto 54px;text-align:center;}
+  h2{font-family:'Fraunces',serif;font-size:2.3rem;font-weight:600;color:var(--indigo);}
+  .section-head p{color:#5f4f7a;margin-top:14px;}
+
+  /* services */
+  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .service-card{background:#fff;border:1px solid rgba(76,46,119,0.12);border-radius:14px;padding:30px 26px;transition:.25s;}
+  .service-card:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:0 20px 40px -24px rgba(44,27,71,0.25);}
+  .service-card .ic{width:34px;height:34px;margin-bottom:16px;}
+  .service-card h3{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:600;margin-bottom:8px;}
+  .service-card p{font-size:0.88rem;color:#6b5c88;}
+
+  .quote-strip{background:var(--violet);color:var(--cream);text-align:center;padding:70px 0;}
+  .quote-strip .wrap{max-width:640px;}
+  .quote-strip p{font-family:'Fraunces',serif;font-style:italic;font-size:1.5rem;line-height:1.4;}
+  .quote-strip .attr{margin-top:20px;font-family:'Work Sans',sans-serif;font-size:0.85rem;color:var(--lilac);}
+
+  .contact .wrap{max-width:680px;text-align:center;}
+  .contact-card{background:#fff;border:1px solid rgba(76,46,119,0.15);border-radius:14px;padding:34px;margin-top:34px;text-align:left;}
+  .contact-card .row{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid rgba(76,46,119,0.1);font-size:0.94rem;}
+  .contact-card .row:last-child{border-bottom:none;}
+  .contact-card .row span:first-child{color:var(--violet);font-weight:600;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.05em;}
+  .demo-note{margin-top:26px;background:rgba(240,190,77,0.13);border:1px solid var(--gold);border-radius:12px;padding:24px;font-size:0.92rem;color:#5f4f7a;line-height:1.65;text-align:left;}
+  .demo-note strong{color:var(--violet);}
+
+  footer{text-align:center;padding:32px;font-size:0.78rem;color:#8873a3;border-top:1px solid rgba(76,46,119,0.1);}
+
+  @media(max-width:860px){
+    .services-grid{grid-template-columns:1fr 1fr;}
+    nav{display:none;}
+    h1{font-size:2.4rem;}
+  }
+  @media(max-width:560px){.services-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M12 2 L13.5 8.5 L20 10 L13.5 11.5 L12 18 L10.5 11.5 L4 10 L10.5 8.5 Z" fill="#F0BE4D"/></svg>
+      Magic Home
+    </div>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#story">Our Work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="header-cta" href="#contact">Book Now</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="sparkle" style="top:18%;left:12%;"></div>
+  <div class="sparkle" style="top:32%;left:85%;animation-delay:0.8s;"></div>
+  <div class="sparkle" style="top:70%;left:8%;animation-delay:1.4s;"></div>
+  <div class="sparkle" style="top:60%;left:90%;animation-delay:0.4s;"></div>
+  <div class="wrap">
+    <div class="kicker">Cleaning · AC · Plumbing · Electrical · Painting — Deira, Dubai</div>
+    <h1>One call, and it's <em>handled.</em></h1>
+    <p class="lede">Magic Home covers everything your home needs — cleaning, AC, plumbing, electrical, painting and renovation — with one team, so you stop juggling five different numbers.</p>
+    <div class="btnrow">
+      <a class="btn btn-primary" href="#contact">Get a Free Quote</a>
+      <a class="btn btn-outline" href="#services">See Services</a>
+    </div>
+
+    <div class="reveal-wrap">
+      <div class="reveal-card">
+        <div class="layer before">
+          <div class="tag">Before</div>
+          <div class="word">Cluttered · Dull · Overdue</div>
+        </div>
+        <div class="layer after" id="afterLayer">
+          <div class="tag">After Magic Home</div>
+          <div class="word">Clean · Bright · Done</div>
+        </div>
+        <div class="slider" id="sliderHandle" style="left:50%;"></div>
+      </div>
+      <input type="range" class="reveal-range" id="revealRange" min="0" max="100" value="50">
+      <div class="reveal-caption">Drag to see the difference one visit makes.</div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">What We Cover</div>
+      <h2>Five services. One trusted team.</h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <svg class="ic" viewBox="0 0 34 34"><circle cx="17" cy="17" r="13" fill="none" stroke="#4C2E77" stroke-width="1.5"/><path d="M12 17 L15.5 20.5 L22 13" stroke="#F0BE4D" stroke-width="2" fill="none"/></svg>
+        <h3>Deep Cleaning</h3>
+        <p>Regular and one-off cleaning for shops, homes and offices, including disinfection.</p>
+      </div>
+      <div class="service-card">
+        <svg class="ic" viewBox="0 0 34 34"><rect x="6" y="10" width="22" height="14" rx="2" fill="none" stroke="#4C2E77" stroke-width="1.5"/><path d="M10 24 L10 28 M24 24 L24 28" stroke="#4C2E77" stroke-width="1.5"/></svg>
+        <h3>AC Maintenance</h3>
+        <p>Repair, installation, duct and coil cleaning, gas refilling — kept cool, kept quiet.</p>
+      </div>
+      <div class="service-card">
+        <svg class="ic" viewBox="0 0 34 34"><path d="M17 6 C10 14 10 20 17 28 C24 20 24 14 17 6 Z" fill="none" stroke="#4C2E77" stroke-width="1.5"/></svg>
+        <h3>Plumbing</h3>
+        <p>Leak detection, pipe and faucet repair, water tank cleaning and water heater installs.</p>
+      </div>
+      <div class="service-card">
+        <svg class="ic" viewBox="0 0 34 34"><path d="M17 5 L21 15 L31 16 L23 22 L26 32 L17 26 L8 32 L11 22 L3 16 L13 15 Z" fill="none" stroke="#4C2E77" stroke-width="1.5"/></svg>
+        <h3>Electrical</h3>
+        <p>Fault finding, light repair, cable pulling and full rewiring, done safely.</p>
+      </div>
+      <div class="service-card">
+        <svg class="ic" viewBox="0 0 34 34"><path d="M6 26 L14 18 L20 24 L28 8" stroke="#4C2E77" stroke-width="1.5" fill="none"/><circle cx="28" cy="8" r="2.5" fill="#F0BE4D"/></svg>
+        <h3>Painting &amp; Renovation</h3>
+        <p>Internal and external painting, kitchen and bathroom renovation, wallpaper and plaster.</p>
+      </div>
+      <div class="service-card">
+        <svg class="ic" viewBox="0 0 34 34"><rect x="8" y="8" width="18" height="18" rx="3" fill="none" stroke="#4C2E77" stroke-width="1.5"/><path d="M8 14 L26 14" stroke="#4C2E77" stroke-width="1.5"/></svg>
+        <h3>Full Home Care</h3>
+        <p>One recurring plan that bundles everything above into a single monthly visit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="quote-strip" id="story">
+  <div class="wrap">
+    <p>&ldquo;We understood the importance of advanced service quality early — and outperformed marketplaces with our own cleaners, not someone else's.&rdquo;</p>
+    <div class="attr">— Mohmmed Shek Zen, Co-founder, Magic Home</div>
+  </div>
+</div>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="kicker">Contact</div>
+    <h2>Ready when you are.</h2>
+    <div class="contact-card">
+      <div class="row"><span>Call</span><span>05 63 63 1000</span></div>
+      <div class="row"><span>Email</span><span>bookings@magichomedubai.com</span></div>
+      <div class="row"><span>Office</span><span>Port Saeed, Deira, Dubai</span></div>
+    </div>
+    <div class="demo-note">
+      <strong>This is a demo.</strong> Your current site hasn't shown a visible update in a couple of years, despite how much ground you cover — cleaning to full renovation. This concept leans into that range with a "before/after" moment right in the hero. Happy to walk through it whenever works.
+    </div>
+  </div>
+</section>
+
+<footer>Demo concept for Magic Home · Not an official company website</footer>
+
+<script>
+  const range = document.getElementById('revealRange');
+  const after = document.getElementById('afterLayer');
+  const slider = document.getElementById('sliderHandle');
+  range.addEventListener('input', () => {
+    const v = range.value;
+    after.style.clipPath = `inset(0 ${100-v}% 0 0)`;
+    slider.style.left = v + '%';
+  });
+</script>
+
+</body>
+</html>

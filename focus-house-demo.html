@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Focus House Technical Services | Dubai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --walnut:#5C3A21;
+    --cream:#F4ECDA;
+    --charcoal:#221C15;
+    --amber:#C9803D;
+    --paper:#FBF7EE;
+    --ruleline: rgba(34,28,21,0.18);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--paper);
+    color:var(--charcoal);
+    font-family:'Inter',sans-serif;
+    line-height:1.55;
+  }
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 32px;}
+
+  /* Ruler nav */
+  .ruler{
+    background:var(--charcoal);
+    color:var(--cream);
+    padding:14px 0;
+    position:sticky;top:0;z-index:50;
+    border-bottom:3px solid var(--amber);
+  }
+  .ruler .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;}
+  .brand{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:600;letter-spacing:0.3px;}
+  .brand span{color:var(--amber);}
+  nav{display:flex;gap:28px;font-size:0.85rem;letter-spacing:0.06em;text-transform:uppercase;font-weight:500;}
+  nav a{opacity:0.85;padding-bottom:3px;border-bottom:1px solid transparent;transition:.2s;}
+  nav a:hover{opacity:1;border-color:var(--amber);}
+  .ruler .cta{background:var(--amber);color:var(--charcoal);padding:8px 16px;border-radius:2px;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;}
+
+  /* Hero */
+  .hero{
+    padding:100px 0 80px;
+    position:relative;
+    overflow:hidden;
+    background:
+      linear-gradient(var(--paper),var(--paper)),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, var(--ruleline) 39px, var(--ruleline) 40px);
+  }
+  .hero .wrap{display:grid;grid-template-columns:1.1fr 0.9fr;gap:60px;align-items:center;}
+  .eyebrow{
+    font-family:'Space Mono',monospace;
+    font-size:0.78rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--walnut);
+    display:flex;align-items:center;gap:10px;
+    margin-bottom:22px;
+  }
+  .eyebrow::before{content:'';width:26px;height:1px;background:var(--amber);}
+  h1{
+    font-family:'Fraunces',serif;
+    font-size:3.4rem;
+    line-height:1.04;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    margin-bottom:24px;
+  }
+  h1 em{font-style:italic;color:var(--walnut);font-weight:500;}
+  .hero p.lede{font-size:1.13rem;max-width:480px;color:#4a4038;margin-bottom:34px;}
+  .btnrow{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn{
+    display:inline-block;padding:15px 28px;font-weight:700;font-size:0.9rem;
+    text-transform:uppercase;letter-spacing:0.05em;border-radius:2px;
+  }
+  .btn-primary{background:var(--charcoal);color:var(--cream);}
+  .btn-outline{border:1.5px solid var(--charcoal);color:var(--charcoal);}
+
+  /* Blueprint house diagram */
+  .blueprint{
+    background:var(--walnut);
+    border-radius:6px;
+    padding:34px;
+    position:relative;
+    aspect-ratio:1/1;
+  }
+  .blueprint svg{width:100%;height:100%;}
+  .blueprint-label{
+    position:absolute;bottom:18px;left:34px;right:34px;
+    font-family:'Space Mono',monospace;color:var(--cream);
+    font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;
+    display:flex;justify-content:space-between;opacity:0.75;
+  }
+
+  /* Marquee of trades */
+  .trades-strip{
+    background:var(--charcoal);color:var(--cream);
+    padding:16px 0;overflow:hidden;white-space:nowrap;
+    font-family:'Space Mono',monospace;font-size:0.85rem;letter-spacing:0.08em;
+  }
+  .trades-strip .track{display:inline-block;animation:scroll 26s linear infinite;}
+  .trades-strip span{margin:0 26px;color:var(--amber);}
+  @keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+  section{padding:90px 0;}
+  .section-head{max-width:640px;margin-bottom:56px;}
+  .section-head .eyebrow{margin-bottom:14px;}
+  h2{font-family:'Fraunces',serif;font-size:2.3rem;font-weight:600;line-height:1.12;}
+  .section-head p{color:#5b5044;margin-top:16px;font-size:1.03rem;}
+
+  /* Services as work-order cards */
+  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--ruleline);border:1px solid var(--ruleline);}
+  .service-card{background:var(--paper);padding:34px 28px;position:relative;}
+  .service-card .num{font-family:'Space Mono',monospace;font-size:0.75rem;color:var(--amber);margin-bottom:16px;display:block;}
+  .service-card h3{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:600;margin-bottom:10px;}
+  .service-card p{font-size:0.92rem;color:#5b5044;}
+
+  /* Trust / stats */
+  .trust{background:var(--cream);}
+  .trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;}
+  .stat{border-left:2px solid var(--amber);padding-left:18px;}
+  .stat .num{font-family:'Fraunces',serif;font-size:2.4rem;font-weight:600;color:var(--walnut);}
+  .stat .label{font-size:0.82rem;text-transform:uppercase;letter-spacing:0.06em;color:#5b5044;margin-top:4px;}
+
+  /* Contact */
+  .contact{background:var(--charcoal);color:var(--cream);}
+  .contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+  .contact h2{color:var(--cream);}
+  .contact-detail{margin-top:28px;font-family:'Space Mono',monospace;font-size:0.95rem;}
+  .contact-detail div{margin-bottom:14px;display:flex;gap:14px;}
+  .contact-detail .k{color:var(--amber);min-width:70px;text-transform:uppercase;font-size:0.75rem;padding-top:3px;}
+  .demo-note{background:rgba(201,128,61,0.12);border:1px solid var(--amber);padding:22px 24px;border-radius:4px;font-size:0.92rem;line-height:1.6;}
+  .demo-note strong{color:var(--amber);}
+
+  footer{padding:34px 0;text-align:center;font-size:0.8rem;color:#8a7d6a;border-top:1px solid var(--ruleline);}
+
+  @media(max-width:860px){
+    .hero .wrap, .contact .wrap{grid-template-columns:1fr;}
+    .services-grid{grid-template-columns:1fr;}
+    .trust-grid{grid-template-columns:1fr 1fr;}
+    h1{font-size:2.4rem;}
+    nav{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="ruler">
+  <div class="wrap">
+    <div class="brand">Focus House<span>.</span></div>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#trust">Why Us</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="cta" href="#contact">Get a Quote</a>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">General Maintenance — Deira, Dubai</div>
+      <h1>One call.<br>Every trade,<br><em>handled right.</em></h1>
+      <p class="lede">Focus House has been the maintenance company Dubai homeowners refer to a friend — AC, plumbing, electrical, carpentry and cleaning, run by one qualified team instead of five different numbers.</p>
+      <div class="btnrow">
+        <a class="btn btn-primary" href="#contact">Request a Callback</a>
+        <a class="btn btn-outline" href="#services">See Services</a>
+      </div>
+    </div>
+    <div class="blueprint">
+      <svg viewBox="0 0 300 300" fill="none">
+        <rect x="20" y="60" width="260" height="200" stroke="#F4ECDA" stroke-width="1.5" opacity="0.9"/>
+        <line x1="20" y1="140" x2="280" y2="140" stroke="#F4ECDA" stroke-width="1" opacity="0.5"/>
+        <line x1="150" y1="60" x2="150" y2="260" stroke="#F4ECDA" stroke-width="1" opacity="0.5"/>
+        <path d="M20 60 L150 15 L280 60" stroke="#C9803D" stroke-width="2" fill="none"/>
+        <circle cx="95" cy="100" r="4" fill="#C9803D"/>
+        <text x="105" y="104" fill="#F4ECDA" font-size="9" font-family="monospace">AC UNIT</text>
+        <circle cx="210" cy="105" r="4" fill="#C9803D"/>
+        <text x="150" y="100" fill="#F4ECDA" font-size="9" font-family="monospace" text-anchor="end">WIRING</text>
+        <circle cx="70" cy="200" r="4" fill="#C9803D"/>
+        <text x="80" y="204" fill="#F4ECDA" font-size="9" font-family="monospace">PLUMBING</text>
+        <circle cx="220" cy="205" r="4" fill="#C9803D"/>
+        <text x="230" y="209" fill="#F4ECDA" font-size="9" font-family="monospace">CARPENTRY</text>
+        <line x1="20" y1="270" x2="280" y2="270" stroke="#F4ECDA" stroke-width="1" opacity="0.6"/>
+        <line x1="20" y1="266" x2="20" y2="274" stroke="#F4ECDA" stroke-width="1" opacity="0.6"/>
+        <line x1="280" y1="266" x2="280" y2="274" stroke="#F4ECDA" stroke-width="1" opacity="0.6"/>
+        <text x="150" y="286" fill="#F4ECDA" font-size="9" font-family="monospace" text-anchor="middle" opacity="0.7">FULL PROPERTY SCOPE</text>
+      </svg>
+      <div class="blueprint-label"><span>FHT-UAE / DEIRA</span><span>SCALE N.T.S.</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="trades-strip">
+  <div class="track">
+    <span>★ AC MAINTENANCE</span><span>★ PLUMBING</span><span>★ ELECTRICAL</span><span>★ CARPENTRY</span><span>★ FLOOR CARE</span><span>★ GLASS &amp; WOOD WORK</span><span>★ DEEP CLEANING</span>
+    <span>★ AC MAINTENANCE</span><span>★ PLUMBING</span><span>★ ELECTRICAL</span><span>★ CARPENTRY</span><span>★ FLOOR CARE</span><span>★ GLASS &amp; WOOD WORK</span><span>★ DEEP CLEANING</span>
+  </div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">What We Cover</div>
+      <h2>Six trades. No subcontracting guesswork.</h2>
+      <p>Every technician is in-house, so the person who quotes the job is accountable for the job.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card"><span class="num">01</span><h3>AC Maintenance</h3><p>Servicing, duct cleaning and repair to keep units running through peak summer load.</p></div>
+      <div class="service-card"><span class="num">02</span><h3>Plumbing</h3><p>Leak repair, fixture installs and water heater work, same-day where possible.</p></div>
+      <div class="service-card"><span class="num">03</span><h3>Electrical</h3><p>Hardware installation and fault-finding carried out to UAE safety standard.</p></div>
+      <div class="service-card"><span class="num">04</span><h3>Carpentry &amp; Wood</h3><p>Doors, cabinets, wardrobes and gypsum work — our original trade, still our strongest.</p></div>
+      <div class="service-card"><span class="num">05</span><h3>Floor Maintenance</h3><p>Marble, tile and wood floor care for residential, commercial and marine clients.</p></div>
+      <div class="service-card"><span class="num">06</span><h3>Deep Cleaning</h3><p>Sofa, carpet and full-property cleaning with fully insured staff.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="trust" id="trust">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Why Homeowners Call Us Back</div>
+      <h2>Built on trust and referral, not ad spend.</h2>
+    </div>
+    <div class="trust-grid">
+      <div class="stat"><div class="num">6</div><div class="label">Trades under one roof</div></div>
+      <div class="stat"><div class="num">100%</div><div class="label">Insured, checked engineers</div></div>
+      <div class="stat"><div class="num">1</div><div class="label">Point of contact, start to finish</div></div>
+      <div class="stat"><div class="num">Free</div><div class="label">No-obligation quote</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow" style="color:#C9803D">Get In Touch</div>
+      <h2>Tell us what needs fixing.</h2>
+      <div class="contact-detail">
+        <div><span class="k">Call</span> <span>04 258 5770</span></div>
+        <div><span class="k">Email</span> <span>focushouseuae@gmail.com</span></div>
+        <div><span class="k">Area</span> <span>Business Bay &amp; Deira, Dubai</span></div>
+      </div>
+    </div>
+    <div class="demo-note">
+      <strong>This is a demo.</strong> Focus House's original site domain has lapsed, so search traffic and referrals currently land nowhere. This concept — six trades, one blueprint, one call to action — is built to fix that and give quotes a place to land. Happy to walk through it, or hand over the files if it's a fit.
+    </div>
+  </div>
+</section>
+
+<footer>Demo concept for Focus House Technical Services · Not an official company website</footer>
+
+</body>
+</html>
