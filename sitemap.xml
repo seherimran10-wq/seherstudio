@@ -9,6 +9,10 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://seherstudio.vercel.app/pricing.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://seherstudio.vercel.app/work.html</loc>
     <priority>0.8</priority>
   </url>
