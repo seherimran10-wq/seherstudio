@@ -56,12 +56,18 @@
 
 <section style="padding-top:0;" id="pricing">
   <div class="wrap">
+    <div class="currency-switch" role="group" aria-label="Choose currency">
+      <button type="button" class="curr-btn" data-currency="USD" aria-pressed="true">$ USD</button>
+      <button type="button" class="curr-btn" data-currency="GBP" aria-pressed="false">£ GBP</button>
+      <button type="button" class="curr-btn" data-currency="AED" aria-pressed="false">AED</button>
+      <button type="button" class="curr-btn" data-currency="CAD" aria-pressed="false">CA$ CAD</button>
+    </div>
     <div class="pricing-grid">
       <div class="price-card reveal">
         <div class="ptag">Website — One Page</div>
         <h3>One-Page Website</h3>
         <p class="pdesc">A single, complete page — ideal for a launch site, portfolio, or a business that just needs one strong page done right.</p>
-        <div class="amount"><span class="from">Starting from</span>$325</div>
+        <div class="amount" data-usd="325"><span class="from">Starting from</span><span class="pnum">$325</span></div>
         <ul class="flist">
           <li>Free working demo before you commit</li>
           <li>Fully custom design, mobile-optimized</li>
@@ -74,7 +80,7 @@
         <div class="ptag">Website — Multi-Page</div>
         <h3>Multi-Page Website</h3>
         <p class="pdesc">A full site — home, services, work, contact, and more — built around your actual business, not a shared template.</p>
-        <div class="amount"><span class="from">Starting from</span>$950</div>
+        <div class="amount" data-usd="950"><span class="from">Starting from</span><span class="pnum">$950</span></div>
         <ul class="flist">
           <li>Up to 5–6 custom-designed pages</li>
           <li>Lead capture, booking, or inquiry forms</li>
@@ -88,7 +94,7 @@
         <div class="ptag">Track 02 — AI Agentic System</div>
         <h3>AI Agentic System</h3>
         <p class="pdesc">A custom automation or AI assistant tailored to your workflow — scope varies most here, so this is a starting point.</p>
-        <div class="amount"><span class="from">Starting from</span>$1,650</div>
+        <div class="amount" data-usd="1650"><span class="from">Starting from</span><span class="pnum">$1,650</span></div>
         <ul class="flist">
           <li>Free working demo before you commit</li>
           <li>Built around your specific workflow</li>
@@ -101,7 +107,7 @@
         <div class="ptag">Track 03 — SEO &amp; Growth</div>
         <h3>Starter</h3>
         <p class="pdesc">Get the basics right — local visibility and a clean technical foundation, tracked monthly.</p>
-        <div class="amount"><span class="from">Starting from</span>$150/mo</div>
+        <div class="amount" data-usd="150" data-suffix="/mo"><span class="from">Starting from</span><span class="pnum">$150/mo</span></div>
         <ul class="flist">
           <li>Google Business Profile optimization</li>
           <li>Basic on-page SEO fixes</li>
@@ -112,7 +118,7 @@
         <div class="ptag">Track 03 — SEO &amp; Growth</div>
         <h3>Growth</h3>
         <p class="pdesc">For businesses ready to actively compete for search traffic, not just show up.</p>
-        <div class="amount"><span class="from">Starting from</span>$350/mo</div>
+        <div class="amount" data-usd="350" data-suffix="/mo"><span class="from">Starting from</span><span class="pnum">$350/mo</span></div>
         <ul class="flist">
           <li>Everything in Starter</li>
           <li>Ongoing keyword &amp; content strategy</li>
@@ -124,7 +130,7 @@
         <div class="ptag">Track 03 — SEO &amp; Growth</div>
         <h3>Full Promotion</h3>
         <p class="pdesc">Search, social, and ads working together — for businesses ready to push growth on every channel.</p>
-        <div class="amount"><span class="from">Starting from</span>$650/mo</div>
+        <div class="amount" data-usd="650" data-suffix="/mo"><span class="from">Starting from</span><span class="pnum">$650/mo</span></div>
         <ul class="flist">
           <li>Everything in Growth</li>
           <li>Social media management</li>
@@ -133,7 +139,7 @@
         </ul>
       </div>
     </div>
-    <p class="pricing-note">Prices shown in USD. Every project starts with a free demo, so the final quote is always confirmed before you spend anything.</p>
+    <p class="pricing-note" id="pricingNote">Prices shown in USD. Every project starts with a free demo, so the final quote is always confirmed before you spend anything.</p>
   </div>
 </section>
 
@@ -163,5 +169,48 @@
 </a>
 
 <script src="shared.js" defer></script>
+<script>
+(function(){
+  var rates = {
+    USD: { rate: 1,    symbol: '$' },
+    GBP: { rate: 0.78, symbol: '£' },
+    AED: { rate: 3.67, symbol: 'AED ' },
+    CAD: { rate: 1.37, symbol: 'CA$' }
+  };
+  var buttons = document.querySelectorAll('.curr-btn');
+  var amounts = document.querySelectorAll('.amount[data-usd]');
+  var note = document.getElementById('pricingNote');
+
+  function render(currency){
+    if(!rates[currency]) currency = 'USD';
+    var r = rates[currency];
+    amounts.forEach(function(el){
+      var usd = parseFloat(el.getAttribute('data-usd'));
+      var suffix = el.getAttribute('data-suffix') || '';
+      var val = Math.round(usd * r.rate).toLocaleString('en-US');
+      el.querySelector('.pnum').textContent = r.symbol + val + suffix;
+    });
+    buttons.forEach(function(b){
+      var active = b.getAttribute('data-currency') === currency;
+      b.classList.toggle('active', active);
+      b.setAttribute('aria-pressed', String(active));
+    });
+    if(note){
+      note.textContent = currency === 'USD'
+        ? "Prices shown in USD. Every project starts with a free demo, so the final quote is always confirmed before you spend anything."
+        : "Prices shown in " + currency + " (approximate). Final invoice is issued in USD — every project starts with a free demo, so the exact quote is always confirmed before you spend anything.";
+    }
+    try { localStorage.setItem('seher_currency', currency); } catch(e){}
+  }
+
+  buttons.forEach(function(b){
+    b.addEventListener('click', function(){ render(b.getAttribute('data-currency')); });
+  });
+
+  var saved = 'USD';
+  try { saved = localStorage.getItem('seher_currency') || 'USD'; } catch(e){}
+  render(saved);
+})();
+</script>
 </body>
 </html>

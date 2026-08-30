@@ -169,6 +169,10 @@ h2{font-family:'Space Grotesk',sans-serif;font-size:2.2rem;font-weight:700;line-
 .price-card li::before{content:'✓';color:var(--gold);}
 .price-card.featured li::before{color:var(--bronze);}
 .pricing-note{text-align:center;color:var(--dim);font-size:0.85rem;margin-top:34px;max-width:560px;margin-left:auto;margin-right:auto;}
+.currency-switch{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:36px;}
+.curr-btn{border:1px solid var(--line);background:rgba(255,255,255,0.03);color:var(--dim);padding:8px 20px;border-radius:20px;font-size:0.85rem;font-family:'Inter',sans-serif;cursor:pointer;transition:border-color .2s ease,color .2s ease,background .2s ease;}
+.curr-btn:hover{border-color:var(--gold);color:var(--ink);}
+.curr-btn.active{background:var(--gold);border-color:var(--gold);color:#0B0D12;font-weight:600;}
 @media(max-width:860px){.pricing-grid{grid-template-columns:1fr;}}
 
 /* services page specific */
